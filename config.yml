@@ -1,0 +1,39 @@
+accounts:
+  - name: alice
+    coins: ["100000000uatom", "100000000000000000000aambinet"]
+  - name: bob
+    coins: ["5000000000000aambinet"]
+validator:
+  name: alice
+  staked: "100000000000000000000aambinet"
+faucet:
+  name: bob 
+  coins: ["10aambinet"]
+build:
+  binary: "ambinetd"
+init:
+  home: "$HOME/.ambinetd"
+  app:
+    evm-rpc:
+      address: "0.0.0.0:8545"     # change the JSON-RPC address and port
+      ws-address: "0.0.0.0:8546"  # change the JSON-RPC websocket address and port
+genesis:
+  chain_id: "ambinetd_9000-1"
+  app_state:
+    staking:
+      params:
+        bond_denom: "aambinet"
+    mint:
+      params:
+        mint_denom: "aambinet"
+    crisis:
+      constant_fee:
+        denom: "aambinet"
+    gov:
+      deposit_params:
+        min_deposit:
+          - amount: "10000000"
+            denom: "aambinet"
+    evm:
+      params:
+        evm_denom: "aambinet"
